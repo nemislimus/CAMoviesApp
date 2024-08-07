@@ -3,11 +3,9 @@ package com.practicum.mymovies.di
 import android.content.Context
 import com.google.gson.Gson
 import com.practicum.mymovies.data.NetworkClient
-import com.practicum.mymovies.data.SearchHistoryStorage
-import com.practicum.mymovies.data.local.SharedPreferencesSearchHistoryStorage
 import com.practicum.mymovies.data.network.IMDbApiService
 import com.practicum.mymovies.data.network.RetrofitNetworkClient
-import com.practicum.mymovies.util.LocalStorage
+import com.practicum.mymovies.data.storage.LocalFavoriteStorage
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -30,15 +28,15 @@ val dataModule = module {
 
     factory { Gson() }
 
-    single<LocalStorage> {
-        LocalStorage(
+    single<LocalFavoriteStorage> {
+        LocalFavoriteStorage(
             sharedPreferences = get()
         )
     }
-
-    single<SearchHistoryStorage> {
-        SharedPreferencesSearchHistoryStorage(prefs = get(), gson = get())
-    }
+//
+//    single<SearchHistoryStorage> {
+//        SharedPreferencesSearchHistoryStorage(prefs = get(), gson = get())
+//    }
 
     single<NetworkClient> {
         RetrofitNetworkClient(imdbService = get(), context = androidContext())

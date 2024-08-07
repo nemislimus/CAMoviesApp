@@ -4,12 +4,12 @@ import com.practicum.mymovies.data.dto.MoviesSearchRequest
 import com.practicum.mymovies.data.dto.MoviesSearchResponse
 import com.practicum.mymovies.domain.api.MoviesRepository
 import com.practicum.mymovies.domain.models.Movie
-import com.practicum.mymovies.util.LocalStorage
-import com.practicum.mymovies.util.Resource
+import com.practicum.mymovies.data.storage.LocalFavoriteStorage
+import com.practicum.mymovies.domain.models.Resource
 
 class MoviesRepositoryImpl(
     private val networkClient: NetworkClient,
-    private val localStorage: LocalStorage,
+    private val localStorage: LocalFavoriteStorage,
 ) : MoviesRepository {
 
     override fun searchMovies(expression: String): Resource<List<Movie>> {

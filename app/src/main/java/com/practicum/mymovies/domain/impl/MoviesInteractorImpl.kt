@@ -3,7 +3,7 @@ package com.practicum.mymovies.domain.impl
 import com.practicum.mymovies.domain.api.MoviesInteractor
 import com.practicum.mymovies.domain.api.MoviesRepository
 import com.practicum.mymovies.domain.models.Movie
-import com.practicum.mymovies.util.Resource
+import com.practicum.mymovies.domain.models.Resource
 import java.util.concurrent.Executors
 
 class MoviesInteractorImpl(private val repository: MoviesRepository) : MoviesInteractor {

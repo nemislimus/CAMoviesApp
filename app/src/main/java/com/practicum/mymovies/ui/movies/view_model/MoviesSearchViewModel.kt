@@ -1,4 +1,4 @@
-package com.practicum.mymovies.presentation.movies
+package com.practicum.mymovies.ui.movies.view_model
 
 import android.app.Application
 import android.os.Handler

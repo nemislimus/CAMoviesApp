@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.practicum.mymovies.ui.poster.PosterActivity
 import com.practicum.mymovies.R
 import com.practicum.mymovies.domain.models.Movie
-import com.practicum.mymovies.presentation.movies.MoviesSearchViewModel
+import com.practicum.mymovies.ui.movies.view_model.MoviesSearchViewModel
 import com.practicum.mymovies.ui.movies.models.MoviesState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

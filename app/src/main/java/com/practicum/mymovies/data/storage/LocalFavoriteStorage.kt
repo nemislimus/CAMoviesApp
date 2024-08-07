@@ -1,8 +1,8 @@
-package com.practicum.mymovies.util
+package com.practicum.mymovies.data.storage
 
 import android.content.SharedPreferences
 
-class LocalStorage(private val sharedPreferences: SharedPreferences) {
+class LocalFavoriteStorage(private val sharedPreferences: SharedPreferences) {
 
     private companion object {
         const val FAVORITES_KEY = "FAVORITES_KEY"

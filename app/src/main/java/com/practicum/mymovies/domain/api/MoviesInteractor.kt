@@ -11,6 +11,7 @@ interface MoviesInteractor {
     }
 
     fun addMovieToFavorites(movie: Movie)
+
     fun removeMovieFromFavorites(movie: Movie)
 
 }
