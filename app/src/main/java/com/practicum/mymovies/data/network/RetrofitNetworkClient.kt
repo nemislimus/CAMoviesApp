@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import com.practicum.mymovies.data.NetworkClient
+import com.practicum.mymovies.data.dto.MovieDetailsRequest
 import com.practicum.mymovies.data.dto.MoviesSearchRequest
 import com.practicum.mymovies.data.dto.Response
 
@@ -16,17 +17,43 @@ class RetrofitNetworkClient(
         if (isConnected() == false) {
             return Response().apply { resultCode = -1 }
         }
-        if (dto !is MoviesSearchRequest) {
-            return Response().apply { resultCode = 400 }
+
+        when(dto) {
+            is MoviesSearchRequest -> {
+                val response = imdbService.searchMovies(dto.expression).execute()
+                val body = response.body()
+                return if (body != null) {
+                    body.apply { resultCode = response.code() }
+                } else {
+                    Response().apply { resultCode = response.code() }
+                }
+            }
+
+            is MovieDetailsRequest -> {
+                val response = imdbService.getMovieDetails(dto.movieId).execute()
+                val body = response.body()
+                return if (body != null) {
+                    body.apply { resultCode = response.code() }
+                } else {
+                    Response().apply { resultCode = response.code() }
+                }
+            }
+
+            else -> return Response().apply { resultCode = 400 }
         }
 
-        val response = imdbService.searchMovies(dto.expression).execute()
-        val body = response.body()
-        return if (body != null) {
-            body.apply { resultCode = response.code() }
-        } else {
-            Response().apply { resultCode = response.code() }
-        }
+
+//        if (dto !is MoviesSearchRequest) {
+//            return Response().apply { resultCode = 400 }
+//        }
+
+//        val response = imdbService.searchMovies(dto.expression).execute()
+//        val body = response.body()
+//        return if (body != null) {
+//            body.apply { resultCode = response.code() }
+//        } else {
+//            Response().apply { resultCode = response.code() }
+//        }
     }
 
     private fun isConnected(): Boolean {

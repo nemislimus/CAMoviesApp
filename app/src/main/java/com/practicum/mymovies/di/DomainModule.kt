@@ -8,15 +8,11 @@ import org.koin.dsl.module
 
 val domainModule = module {
 
-    single<MoviesInteractor> {
+    factory<MoviesInteractor> {
         MoviesInteractorImpl(
             repository = get()
         )
     }
-
-//    single<SearchHistoryInteractor> {
-//        SearchHistoryInteractorImpl()
-//    }
 
     single<MoviesRepository> {
         MoviesRepositoryImpl(
@@ -24,9 +20,5 @@ val domainModule = module {
             localStorage =  get(),
         )
     }
-
-//    single<SearchHistoryRepository> {
-//        SearchHistoryRepositoryImpl()
-//    }
 
 }

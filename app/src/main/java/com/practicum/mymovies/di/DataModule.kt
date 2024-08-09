@@ -33,10 +33,6 @@ val dataModule = module {
             sharedPreferences = get()
         )
     }
-//
-//    single<SearchHistoryStorage> {
-//        SharedPreferencesSearchHistoryStorage(prefs = get(), gson = get())
-//    }
 
     single<NetworkClient> {
         RetrofitNetworkClient(imdbService = get(), context = androidContext())

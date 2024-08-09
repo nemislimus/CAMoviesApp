@@ -80,7 +80,7 @@ class MoviesSearchViewModel(
                         errorMessage != null -> {
                             renderState(
                                 MoviesState.Error(
-                                    message = getApplication<Application>().getString(R.string.something_went_wrong),
+                                    errorMessage = getApplication<Application>().getString(R.string.something_went_wrong),
                                 )
                             )
                             showToast.postValue(errorMessage.toString())

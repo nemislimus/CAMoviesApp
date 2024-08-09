@@ -34,9 +34,14 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+    implementation libs.androidx.viewpager2
     def moxyVersion = '2.2.2'
 
     implementation libs.moxy

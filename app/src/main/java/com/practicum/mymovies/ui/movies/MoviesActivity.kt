@@ -14,7 +14,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.practicum.mymovies.ui.poster.PosterActivity
+import com.practicum.mymovies.ui.poster.DetailsActivity
 import com.practicum.mymovies.R
 import com.practicum.mymovies.domain.models.Movie
 import com.practicum.mymovies.ui.movies.view_model.MoviesSearchViewModel
@@ -27,8 +27,9 @@ class MoviesActivity : ComponentActivity() {
         object : MoviesAdapter.MovieClickListener {
             override fun onMovieClick(movie: Movie) {
                 if (clickDebounce()) {
-                    val intent = Intent(this@MoviesActivity, PosterActivity::class.java)
+                    val intent = Intent(this@MoviesActivity, DetailsActivity::class.java)
                     intent.putExtra("poster", movie.image)
+                    intent.putExtra("movieId", movie.id)
                     startActivity(intent)
                 }
             }
@@ -57,7 +58,7 @@ class MoviesActivity : ComponentActivity() {
 
         placeholderMessage = findViewById(R.id.placeholderMessage)
         queryInput = findViewById(R.id.queryInput)
-        moviesList = findViewById(R.id.locations)
+        moviesList = findViewById(R.id.moviesRecycler)
         progressBar = findViewById(R.id.progressBar)
 
         moviesList.layoutManager =
@@ -100,7 +101,7 @@ class MoviesActivity : ComponentActivity() {
         when (state) {
             is MoviesState.Loading -> showLoading()
             is MoviesState.Content -> showContent(state.movies)
-            is MoviesState.Error -> showError(state.message)
+            is MoviesState.Error -> showError(state.errorMessage)
             is MoviesState.Empty -> showEmpty(state.message)
         }
     }

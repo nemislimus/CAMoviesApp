@@ -5,8 +5,8 @@
     android:orientation="horizontal"
     android:padding="8dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginBottom="8dp"
-    android:background="#eeeeee">
+    android:layout_marginBottom="16dp"
+    android:background="@color/crimson">
 
     <ImageView android:id="@+id/cover"
         android:layout_width="120dp"
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"/>
 
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="italic"/>
 
