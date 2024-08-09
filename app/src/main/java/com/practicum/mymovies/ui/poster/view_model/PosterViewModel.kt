@@ -8,12 +8,7 @@ class PosterViewModel (
     private val posterUrl: String
 ) : ViewModel() {
 
-    private var posterPictUrl = MutableLiveData<String>()
-
-    init {
-        posterPictUrl.postValue(posterUrl)
-    }
-
+    private var posterPictUrl = MutableLiveData(posterUrl)
     fun getPosterUrlLiveData(): LiveData<String> = posterPictUrl
 
 }

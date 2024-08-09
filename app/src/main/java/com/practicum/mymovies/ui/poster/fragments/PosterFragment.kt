@@ -17,7 +17,7 @@ class PosterFragment : Fragment() {
 
     private lateinit var binding: FragmentPosterBinding
 
-    private val posterViewModel: PosterViewModel by viewModel {
+    private val posterViewModel by viewModel<PosterViewModel> {
         parametersOf(requireArguments().getString(POSTER_URL))
     }
 
